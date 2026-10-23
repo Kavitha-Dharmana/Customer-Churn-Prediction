@@ -2,9 +2,8 @@
 # coding: utf-8
 
 # In[1]:
+# Install required libraries using: pip install pandas numpy matplotlib seaborn scikit-learn
 
-
-get_ipython().run_line_magic('pip', 'install pandas numpy matplotlib seaborn scikit-learn')
 
 
 # In[2]:
