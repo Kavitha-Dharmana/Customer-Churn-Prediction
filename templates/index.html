@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Customer Churn Prediction</h1>
+    <p>Predict whether a customer may leave the service.</p>
+
+    <form action="/predict" method="POST">
+        <label>Gender</label>
+        <select name="gender" required>
+            <option>Female</option><option>Male</option>
+        </select>
+
+        <label>Senior Citizen</label>
+        <select name="SeniorCitizen" required>
+            <option value="0">No</option><option value="1">Yes</option>
+        </select>
+
+        <label>Partner</label>
+        <select name="Partner"><option>Yes</option><option>No</option></select>
+
+        <label>Dependents</label>
+        <select name="Dependents"><option>Yes</option><option>No</option></select>
+
+        <label>Tenure (months)</label>
+        <input type="number" name="tenure" min="0" max="72" required>
+
+        <label>Phone Service</label>
+        <select name="PhoneService"><option>Yes</option><option>No</option></select>
+
+        <label>Multiple Lines</label>
+        <select name="MultipleLines">
+            <option>No</option><option>Yes</option><option>No phone service</option>
+        </select>
+
+        <label>Internet Service</label>
+        <select name="InternetService">
+            <option>DSL</option><option>Fiber optic</option><option>No</option>
+        </select>
+
+        <label>Online Security</label>
+        <select name="OnlineSecurity">
+            <option>Yes</option><option>No</option><option>No internet service</option>
+        </select>
+
+        <label>Online Backup</label>
+        <select name="OnlineBackup">
+            <option>Yes</option><option>No</option><option>No internet service</option>
+        </select>
+
+        <label>Device Protection</label>
+        <select name="DeviceProtection">
+            <option>Yes</option><option>No</option><option>No internet service</option>
+        </select>
+
+        <label>Tech Support</label>
+        <select name="TechSupport">
+            <option>Yes</option><option>No</option><option>No internet service</option>
+        </select>
+
+        <label>Streaming TV</label>
+        <select name="StreamingTV">
+            <option>Yes</option><option>No</option><option>No internet service</option>
+        </select>
+
+        <label>Streaming Movies</label>
+        <select name="StreamingMovies">
+            <option>Yes</option><option>No</option><option>No internet service</option>
+        </select>
+
+        <label>Contract</label>
+        <select name="Contract">
+            <option>Month-to-month</option><option>One year</option><option>Two year</option>
+        </select>
+
+        <label>Paperless Billing</label>
+        <select name="PaperlessBilling"><option>Yes</option><option>No</option></select>
+
+        <label>Payment Method</label>
+        <select name="PaymentMethod">
+            <option>Electronic check</option>
+            <option>Mailed check</option>
+            <option>Bank transfer (automatic)</option>
+            <option>Credit card (automatic)</option>
+        </select>
+
+        <label>Monthly Charges</label>
+        <input type="number" name="MonthlyCharges" min="0" step="0.01" required>
+
+        <label>Total Charges</label>
+        <input type="number" name="TotalCharges" min="0" step="0.01" required>
+
+        <button type="submit">Predict Churn</button>
+    </form>
+
+    {% if result %}
+        <h2>Prediction Result</h2>
+        <p>{{ result }}</p>
+        <p>Churn Probability: {{ probability }}%</p>
+    {% endif %}
+</body>
+</html>
