@@ -1,51 +1,95 @@
-# 📊 Customer Churn Prediction Using Machine Learning
+# Customer Churn Prediction Using Machine Learning
 
-A Machine Learning web application that predicts whether a telecom customer is likely to stay with or leave a service based on customer information, subscription details, and billing data.
+**A Machine Learning Web Application to Predict Customer Churn in the Telecommunications Industry**
 
-## 🚀 Project Overview
+## About the Project
 
-Customer churn is a major challenge for telecommunication companies. Losing customers can affect revenue and business growth.
+Customer Churn Prediction is a Machine Learning project that predicts whether a telecom customer is likely to continue using a service or leave it.
 
-This project uses Machine Learning algorithms to analyze customer data and predict the likelihood of churn. It also provides a simple web interface where users can enter customer details and receive a prediction.
+Customer churn is an important challenge for telecommunication companies because losing customers can affect revenue and business growth. This project analyzes customer demographics, service subscriptions, contract details, and billing information to predict potential churn.
 
-## 🎯 Objectives
+The application uses a trained Machine Learning model and a Flask-based web interface. Users can enter customer details and receive a prediction along with an estimated churn probability.
+
+## Project Objectives
 
 - Predict whether a customer is likely to stay or leave.
-- Analyze customer behavior and subscription information.
+- Analyze customer information and service usage patterns.
 - Estimate the probability of customer churn.
-- Demonstrate how Machine Learning can support customer retention strategies.
+- Apply Machine Learning to a real-world business problem.
+- Demonstrate how predictive analytics can support customer retention strategies.
 
-## ✨ Key Features
+## Key Features
 
-- **Customer Data Input:** Enter customer, service, contract, and billing details.
+- **Customer Information Input:** Enter customer demographics, service details, contract information, and billing data.
 - **Churn Prediction:** Predict whether a customer may stay or leave.
-- **Probability Estimation:** Display the model's estimated churn probability.
-- **Interactive Web Interface:** Access predictions through a Flask-based application.
-- **Responsive Design:** Simple interface styled with HTML and CSS.
+- **Churn Probability:** Display the model's estimated probability of churn.
+- **Interactive Web Application:** Submit customer details through a Flask-powered interface.
+- **Responsive User Interface:** Use a clean web form built with HTML and CSS.
+- **Machine Learning Integration:** Load the trained model to generate predictions from user input.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| Python | Programming language |
-| Pandas | Data manipulation and preprocessing |
-| Scikit-learn | Machine Learning model development |
-| Joblib | Saving and loading trained model files |
-| Flask | Web application and prediction API |
-| HTML | Web page structure |
-| CSS | Website styling |
-| Jupyter Notebook | Data analysis and model experimentation |
+| Python | Application development and model implementation |
+| Pandas | Data cleaning and preprocessing |
+| Scikit-learn | Model training, evaluation, and prediction |
+| Joblib | Saving and loading the trained model |
+| Flask | Building the web application |
+| HTML | Structuring the web page |
+| CSS | Styling the user interface |
+| Jupyter Notebook | Data exploration and model experimentation |
 
-## 🤖 Machine Learning Algorithms
+## Machine Learning Algorithms
 
-The project explores the following algorithms:
+The project explores two classification algorithms:
 
-- **Logistic Regression**
-- **Random Forest Classifier**
+1. **Logistic Regression** — A classification algorithm used to predict customer churn.
+2. **Random Forest Classifier** — An ensemble learning algorithm used to generate predictions in the current web application.
 
-The Random Forest model is used in the current web application to generate customer churn predictions.
+The models are evaluated using classification accuracy to compare their performance.
 
-## 📂 Project Structure
+## Dataset
+
+The project uses the **Telco Customer Churn dataset**, which contains information about telecommunications customers, their subscribed services, contract types, and billing details.
+
+Important features include:
+
+- Customer demographics, including gender and senior citizen status
+- Partner and dependent information
+- Tenure and phone services
+- Internet services and additional service subscriptions
+- Contract type and payment method
+- Monthly charges and total charges
+- Customer churn status
+
+The customer identifier (`customerID`) is excluded from model training because it identifies individual records rather than representing customer behavior.
+
+## Project Workflow
+
+1. **Data Collection:** Load the Telco Customer Churn dataset.
+2. **Data Cleaning:** Convert `TotalCharges` into numeric values and handle missing values.
+3. **Data Preprocessing:** Separate input features and the target variable, then encode categorical variables.
+4. **Model Training:** Train Logistic Regression and Random Forest classification models.
+5. **Model Evaluation:** Compare model performance using classification accuracy.
+6. **Model Serialization:** Save the trained model and feature-column information using Joblib.
+7. **Web Application Development:** Build a Flask application with an HTML form and CSS styling.
+8. **Prediction:** Process user input, align features with the training columns, and generate the churn prediction and estimated probability.
+
+## Model Performance
+
+The following are the approximate accuracy results from the current experiments:
+
+| Machine Learning Model | Accuracy |
+|---|---:|
+| Logistic Regression | 80.31% |
+| Random Forest Classifier | 79.03% |
+
+Logistic Regression achieved slightly higher accuracy in these experiments. The current web application uses the Random Forest model.
+
+*Note: Accuracy alone does not fully measure churn prediction quality. Precision, recall, F1-score, and ROC-AUC can provide additional insights, especially when evaluating customer churn.*
+
+## Project Structure
 
 ```text
 Customer-Churn-Prediction/
@@ -55,111 +99,107 @@ Customer-Churn-Prediction/
 ├── app.py
 ├── churn_model.pkl
 ├── model_columns.pkl
+├── requirements.txt
+├── README.md
 │
 ├── templates/
 │   └── index.html
 │
-├── static/
-│   └── style.css
-│
-├── requirements.txt
-└── README.md
+└── static/
+    └── style.css
 ```
 
-*Note: The model files and `requirements.txt` should be added to the repository if they are needed to run the application. The structure above shows the intended complete project layout.*
+*The structure above represents the intended project layout. The model files and `requirements.txt` must be present for the application to run as described.*
 
-## 📊 Dataset
+## Installation and Setup
 
-This project uses the **Telco Customer Churn dataset**, which contains customer demographics, service subscriptions, contract details, and billing information.
+### Prerequisites
 
-The dataset includes features such as:
+- Python installed on your computer
+- Git installed if cloning the repository
+- The required Python libraries
+- The trained model files
 
-- Gender, senior citizen status, partner, and dependents
-- Customer tenure
-- Phone and internet services
-- Contract type and payment method
-- Monthly charges and total charges
-- Churn status
-
-The `customerID` column is excluded from model training because it is an identifier rather than a useful customer behavior feature.
-
-## ⚙️ Project Workflow
-
-1. Load the customer churn dataset.
-2. Clean and preprocess the data.
-3. Convert categorical variables into numerical features.
-4. Train and evaluate Machine Learning models.
-5. Save the trained model and feature columns.
-6. Build a Flask web application.
-7. Accept customer details through a web form.
-8. Generate a churn prediction and estimated probability.
-
-## 💻 Installation and Setup
-
-### 1. Clone the repository
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/Kavitha-Dharmana/Customer-Churn-Prediction.git
 cd Customer-Churn-Prediction
 ```
 
-### 2. Install the dependencies
+### Step 2: Install Dependencies
+
+If `requirements.txt` is available, run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Ensure the model files are available
+### Step 3: Verify the Model Files
 
-Make sure `churn_model.pkl` and `model_columns.pkl` are present in the project root directory.
+Ensure the following files exist in the project root directory:
 
-### 4. Run the application
+- `churn_model.pkl`
+- `model_columns.pkl`
+
+These files are required by the Flask application.
+
+### Step 4: Run the Application
 
 ```bash
 python app.py
 ```
 
-### 5. Open the application
+### Step 5: Open the Web Application
 
-Open the following address in your browser:
+Open your browser and visit:
 
-```text
 http://127.0.0.1:5000
-```
 
-Enter customer details and click the prediction button to view the result.
+Enter the customer details in the form and submit them to view the prediction.
 
-## 📈 Model Evaluation
+## Example Output
 
-The models were evaluated using classification accuracy.
+Depending on the entered customer information, the application displays:
 
-| Model | Accuracy |
-|---|---:|
-| Logistic Regression | Approximately 80.31% |
-| Random Forest Classifier | Approximately 79.03% |
+- **Prediction:** Customer may stay or Customer may leave
+- **Churn Probability:** An estimated percentage generated by the model
 
-These results are from the current experiments and may vary depending on preprocessing, data splitting, and model configuration.
+The prediction is an estimate and does not guarantee that a customer will actually stay or leave.
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
-- Improve prediction performance through hyperparameter tuning.
-- Add more evaluation metrics such as precision, recall, F1-score, and ROC-AUC.
-- Deploy the application online for public access.
-- Build a dashboard to visualize churn trends.
-- Provide customer retention suggestions based on prediction results.
+- Improve model performance through hyperparameter tuning.
+- Evaluate models using precision, recall, F1-score, and ROC-AUC.
+- Add visualizations to explore churn patterns and customer behavior.
+- Provide customer retention recommendations.
+- Deploy the application online so users can access it through a public URL.
+- Improve input validation and application error handling.
 
-## ⚠️ Disclaimer
+## Learning Outcomes
 
-The predictions are estimates generated by a Machine Learning model and are not guaranteed outcomes. They should be used as decision-support information rather than as the sole basis for business decisions.
+Through this project, I gained practical experience in:
 
-## 👩‍💻 Author
+- Data cleaning and preprocessing
+- Exploratory data analysis and feature engineering
+- Classification model training and evaluation
+- Saving and loading Machine Learning models
+- Integrating a trained model with Flask
+- Developing a web interface using HTML and CSS
+- Applying Machine Learning to a real-world business problem
+
+## Author
 
 **Kavitha Dharmana**
 
-B.Tech – Artificial Intelligence and Machine Learning
+B.Tech — Artificial Intelligence and Machine Learning
 
 GitHub: [Kavitha-Dharmana](https://github.com/Kavitha-Dharmana)
 
+## Disclaimer
+
+This project is developed for educational and demonstration purposes. Predictions are based on the available dataset and trained model and should not be treated as guaranteed outcomes or as the sole basis for business decisions.
+
 ---
 
-⭐ If you find this project interesting, feel free to explore the repository and share your feedback.
+If you find this project interesting, feel free to explore the repository and share your feedback.
